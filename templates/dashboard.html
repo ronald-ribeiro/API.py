@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard</title>
+    <!-- Incluindo a biblioteca jQuery necessário para atualização de dados-->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        function atualizarDados() {
+             // Faz uma requisição GET para a rota '/api/dados' no servidor
+            $.get('/api/dados', function(data) {
+                // Limpa a lista de dados existente
+                $('#dados').empty();
+                // Percorre cada item da lista de dados 
+                data.forEach(function(item) {
+                    var temperatura = item.temperatura;
+                    var umidade = item.umidade;
+                    var estado = item.estado;
+                    // Adiciona um novo item à lista com os dados do cliente
+                    $('#dados').append('<li>Temperatura: ' + temperatura + ', Umidade: ' + umidade + ', Estado: ' + estado + '</li>');
+                });
+            });
+        }
+
+        setInterval(atualizarDados, 1000);  // Chama a função atualizarDados e atualiza a cada segundo
+    </script>
+</head>
+<body>
+    <h1>Dados</h1>
+    <ul id="dados"></ul>  <!-- Mostrará na dashboard as informações-->
+</body>
+</html>
