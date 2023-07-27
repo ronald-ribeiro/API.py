@@ -3,7 +3,7 @@ import csv #Biblioteca csv.
 
 app = Flask(__name__) # Cria uma instância do Flask e atribue à variável app
 
-#Espera requisição POST com dados JSON contendo o nome, email e idade do usuário e os dados serão salvo em 'dados.csv'
+#Espera requisição POST com dados JSON contendo a temperatura, umidade e estado os dados serão salvo em 'dados.csv'
 @app.route('/registar', methods=['POST'])
 #Onde recebe os dados
 def registar():
